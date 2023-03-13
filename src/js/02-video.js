@@ -12,11 +12,11 @@ const CURRENT_TIME = "videoplayer-current-time";
 // Вивчи документацію методу on() і почни відстежувати подію timeupdate - оновлення часу відтворення.
 // Зберігай час відтворення у локальне сховище. 
 const handlePlayTime = function (e) {
-    localStorage.setItem(CURRENT_TIME, e.seconds)
+    localStorage.setItem(CURRENT_TIME, e.seconds);
 };
 
 // і зроби так, щоб час відтворення оновлювався у сховищі не частіше, ніж раз на секунду.
 player.on('timeupdate', throttle(handlePlayTime, 1000));
 
 // Під час перезавантаження сторінки скористайся методом setCurrentTime() з метою відновлення відтворення зі збереженої позиції.
-player.setCurrentTime(localStorage.getItem(CURRENT_TIME));
+player.setCurrentTime(localStorage.getItem(CURRENT_TIME) || 0);

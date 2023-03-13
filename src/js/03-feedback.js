@@ -21,9 +21,13 @@ formEl.addEventListener('submit', handleFormSubmit);
 
 let formData = {};
 
+
 function handleInputText(e) {
+
     formData[e.target.name] = e.target.value;
     localStorage.setItem(FFS_KEY, JSON.stringify(formData));
+    // console.log({ email: `${emailEl.value}`, message: `${messageEl.value}` });
+
 }
 
 // Під час сабміту форми очищуй сховище і поля форми, а також виводь
@@ -33,8 +37,10 @@ function handleFormSubmit(e) {
 
     if (emailEl.value !== '' && messageEl.value !== '') {
         localStorage.removeItem(FFS_KEY);
-        formData.email = emailEl.value;
-        formData.message = messageEl.value;
+
+        // formData.email = emailEl.value;
+        // formData.message = messageEl.value;
+        console.log({ email: `${emailEl.value}`, message: `${messageEl.value}` });
 
         e.target.reset();
         return;
